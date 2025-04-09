@@ -53,6 +53,7 @@ export const getOrders = asyncHandler(async (req, res) => {
     const user = req.user._id
     
     const orders = await Order.find({ user: user })
+        .populate('product.productId')
         
 
         if (!orders || orders.length === 0) {
